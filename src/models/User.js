@@ -1,24 +1,20 @@
+const bcrypt = require('bcrypt');
 const Model = require('../../modules/class/Model');
 
-class Example extends Model {
+class User extends Model {
 
-	constructor({ name, lastname }) {
+	constructor({
+		name, email, password, phone, linkWhatsapp, posts
+	}) {
 		super();
 		this.name = name;
-		this.lastname = lastname;
-	}
-
-	static get collection() {
-		return 'examples';
-	}
-
-	get collection() {
-		return 'examples';
-	}
-
-	static instantiate(obj) {
-		return new Example(obj);
+		this.email = email;
+		this.password = bcrypt.hashSync(password, 12);
+		this.phone = phone;
+		this.link_whatsapp = linkWhatsapp;
+		this.posts = posts;
+		this.status = Model.statuses.active;
 	}
 }
 
-module.exports = Example;
+module.exports = User;

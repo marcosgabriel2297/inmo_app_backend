@@ -1,6 +1,6 @@
-// const nameModule = 'user/';
-// const { app: user } = require('./src/login');
+const nameModule = 'user/';
+const { app: user } = require('./src/create');
 
-// module.exports = define => {
-// define(nameModule + 'login', user);
-// };
+module.exports = define => {
+	define(nameModule + 'create', user);
+};

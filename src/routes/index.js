@@ -1,5 +1,5 @@
 let app = null;
-// const user = require('./user');
+const user = require('./user');
 
 const defineRoute = (ruta, requests) => {
 	const baseRequest = '/api/';
@@ -11,5 +11,5 @@ const defineRoute = (ruta, requests) => {
 module.exports = aplication => {
 	app = aplication;
 
-	// user(defineRoute);
+	user(defineRoute);
 };
