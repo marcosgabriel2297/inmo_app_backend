@@ -82,7 +82,7 @@ module.exports = class Model {
 		}
 	}
 
-	static async findOneAndModify(id, data) {
+	static async update(id, data) {
 
 		try {
 
