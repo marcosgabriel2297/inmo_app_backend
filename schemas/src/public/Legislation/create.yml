@@ -1,0 +1,23 @@
+paths:
+  /api/legislation/create-legislation:
+    post:
+      operationId: createLegislation
+      tags:
+        - Legislation
+      summary: Create a legislation
+      security:
+        - ApiKey: []
+      requestBody:
+        description: create legislation
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Legislation"
+      responses:
+        "200":
+          $ref: "#/components/responses/SuccessCreateLegislationResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "500":
+          $ref: "#/components/responses/InternalError"

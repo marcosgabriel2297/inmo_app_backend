@@ -1,0 +1,17 @@
+paths:
+  /api/area/delete/{id}:
+    delete:
+      operationId: deleteArea
+      tags:
+        - Area
+      summary: Delete an area
+      security:
+        - ApiKey: []
+            
+      responses:
+        "200":
+          $ref: "#/components/responses/SuccessDeleteAreaResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "500":
+          $ref: "#/components/responses/InternalError"

@@ -1,0 +1,28 @@
+paths:
+  /api/user/login:
+    post:
+      operationId: loginUser
+      tags:
+        - User
+      summary: Login a user
+      security:
+        - ApiKey: []
+          ApiSecret: []
+      requestBody:
+        description: The login
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LoginUser"
+      responses:
+        "200":
+          $ref: "#/components/responses/SuccessLoginResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "403":
+          $ref: "#/components/responses/Forbidden"
+        "500":
+          $ref: "#/components/responses/InternalError"

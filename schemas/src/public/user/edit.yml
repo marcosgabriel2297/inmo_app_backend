@@ -1,0 +1,23 @@
+paths:
+  /api/user/edit-collaborator/{id}:
+    post:
+      operationId: editCollaborator
+      tags:
+        - User
+      summary: Edit a collaborator user
+      security:
+        - ApiKey: []
+      requestBody:
+        description: edit collaborator user
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CollaboratorUserEdit"
+      responses:
+        "200":
+          $ref: "#/components/responses/SuccessEditCollaboratorResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "500":
+          $ref: "#/components/responses/InternalError"

@@ -1,0 +1,17 @@
+paths:
+  /api/user/delete-user/{id}:
+    delete:
+      operationId: deleteUSer
+      tags:
+        - User
+      summary: Delete a User
+      security:
+        - ApiKey: []
+            
+      responses:
+        "200":
+          $ref: "#/components/responses/SuccessDeleteUserResponse"
+        "404":
+          $ref: "#/components/responses/notFoundUsersResponse"
+        "500":
+          $ref: "#/components/responses/InternalError"

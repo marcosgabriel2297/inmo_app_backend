@@ -1,0 +1,17 @@
+paths:
+  /api/legislation/get-legislations:
+    get:
+      operationId: getLegislations
+      tags:
+        - Legislation
+      summary: get all legislations
+      security:
+        - ApiKey: []
+            
+      responses:
+        "200":
+          $ref: "#/components/responses/SuccessGetAllLegislationsResponse"
+        "404":
+          $ref: "#/components/responses/notFoundLegislationsResponse"
+        "500":
+          $ref: "#/components/responses/InternalError"

@@ -1,0 +1,17 @@
+paths:
+  /api/legislation/delete-legislation/{id}:
+    delete:
+      operationId: deleteLegislation
+      tags:
+        - Legislation
+      summary: Delete a legislation
+      security:
+        - ApiKey: []
+            
+      responses:
+        "200":
+          $ref: "#/components/responses/SuccessDeleteLegislationResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "500":
+          $ref: "#/components/responses/InternalError"

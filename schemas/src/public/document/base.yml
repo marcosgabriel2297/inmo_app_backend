@@ -1,0 +1,114 @@
+components:
+  schemas:
+    Document:
+      description: Un documento
+      type: object
+      properties:
+        id:
+          $ref: "#/components/schemas/id"
+        numero:
+          description: Número del documento
+          type: string
+          example: 1
+        serie:
+          description: Serie del documento
+          type: string
+          example: 'serie del documento'
+        anioSancion:
+          description: Anio de sancion del documento
+          type: string
+          example: '2018'
+        fechaSancion:
+          description: Fecha de sancion del documento
+          type: date
+          example: '2018-09-12 03:00:00.000Z'
+        numeroExpediente:
+          description: Numero del expediente del documento
+          type: string
+          example: '90'
+        numeroDecreto:
+          description: Numero de decreto del documento
+          type: string
+          example: '123'
+        anioPromulgacion:
+          description: Anio de promulgacion del documento
+          type: string
+          example: '2004'
+        tipoLegislacion:
+          description: Tipo de legislacion del documento. Ver [Legislation](/v2/service/catalog#tag/Legislation) para mas informacion.
+          type: string
+          example: 'salud'
+        fechaPromulgacion:
+          description: Fecha de promulgacion del documento
+          type: date
+          example: '2018-09-12 03:00:00.000Z'
+        fechaBoletin:
+          description: Fecha del boletin del documento
+          type: string
+          example: '2018-09-12 03:00:00.000Z'
+        numeroBoletin:
+          description: Numero de boletin del documento
+          type: string
+          example: '3'
+        asunto:
+          description: Asunto del documento
+          type: string
+          example: 'Interno'
+        area:
+          description: Area del documento. Ver [Area](/v2/service/catalog#tag/Area) para mas informacion.
+          type: string
+          example: 'Salud'
+        aclaraciones:
+          description: Aclaraciones del documento
+          type: string
+          example: 'una aclaracion muy buena'
+        palabrasClave:
+          description: Palabras clave del documento. Estas palabras claves, pertenecen a las areas. Por lo tanto, para mas informacion ver [Area](/v2/service/catalog#tag/Area)
+          type: array
+          example: ['covid', 'vacunacion']
+        savePath:
+          description: Path de donde esta guardado el documento.
+          type: string
+          example: '/doc/public/623ccc0c3a7d0706459c3c97.pdf'
+        status:
+          $ref: "#/components/schemas/status"
+      required:
+       - numero
+       - serie
+       - anioSancion
+       - fechaSancion
+       - numeroExpediente
+       - numeroDecreto
+       - anioPromulgacion
+       - tipoLegislacion
+       - fechaPromulgacion
+       - fechaBoletin
+       - numeroBoletin
+       - asunto
+       - area
+       - aclaraciones
+       - savePath
+
+    SaveFile:
+      description: Guardar archivo
+      type: string
+      example: 623ccc0c3a7d0706459c3c97.pdf
+
+    FieldsToFilter:
+      description: Campos que se van a utilizar para filtrar documentos
+      type: object
+      properties:
+        numero:
+          $ref: "#/components/schemas/Document/properties/numero"
+        anioSancion:
+          $ref: "#/components/schemas/Document/properties/anioSancion"
+        numeroExpediente:
+          $ref: "#/components/schemas/Document/properties/numeroExpediente"
+        tipoLegislacion:
+          $ref: "#/components/schemas/Document/properties/tipoLegislacion"
+        asunto:
+          $ref: "#/components/schemas/Document/properties/asunto"
+        area:
+          $ref: "#/components/schemas/Document/properties/area"
+        palabrasClave:
+          $ref: "#/components/schemas/Document/properties/palabrasClave"

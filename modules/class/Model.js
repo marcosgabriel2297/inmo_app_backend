@@ -1,6 +1,5 @@
-const Mongo = require('../database/Mongo');
-
-const mongo = new Mongo();
+const mongodb = require('mongodb');
+const mongo = require('../database/Mongo');
 
 module.exports = class Model {
 
@@ -21,10 +20,91 @@ module.exports = class Model {
 
 	async insert() {
 
-		const db = await mongo.connect();
+		try {
+
+			const entityInserted = await mongo.collection(this.collection).insertOne(this);
+
+			return entityInserted;
+		} catch(error) {
+			return error.message;
+		}
+	}
+
+	static async getOne(params = {}) {
 
 		try {
-			return db.collection(this.collection).insertOne(this);
+			const getData = await mongo.collection(this.collection).findOne(params);
+
+			return getData;
+		} catch(error) {
+			return error.message;
+		}
+	}
+
+	static async get(params = {}) {
+
+		try {
+			const getData = await mongo.collection(this.collection).find(params).toArray();
+
+			return getData;
+		} catch(error) {
+			return error.message;
+		}
+	}
+
+	static async getOr(filters = {}) {
+
+		const formatFilters = Object.entries(filters).reduce((filterAcum, filter) => {
+
+			filterAcum.push({ [filter[0]]: filter[1] });
+			return filterAcum;
+		}, []);
+
+		try {
+			const getData = await mongo.collection(this.collection).find({ $or: formatFilters }).toArray();
+
+			return getData;
+		} catch(error) {
+			return error.message;
+		}
+	}
+
+	static async getById(id) {
+
+		const idFormatted = mongodb.ObjectId(id);
+
+		try {
+			const getData = await mongo.collection(this.collection).findOne({ _id: idFormatted });
+
+			return getData;
+		} catch(error) {
+			return error.message;
+		}
+	}
+
+	static async findOneAndModify(id, data) {
+
+		try {
+
+			const getData = await mongo.collection(this.collection).findOneAndUpdate({ _id: mongodb.ObjectId(id) }, { $set: data }, { new: true });
+
+			return getData;
+
+		} catch(error) {
+			return error.message;
+		}
+	}
+
+	static async delete(id) {
+
+		try {
+
+			const getData = await mongo.collection(this.collection).findOneAndUpdate(
+				{ _id: mongodb.ObjectId(id) },
+				{ $set: { status: Model.statuses.inactive } });
+
+			return getData;
+
 		} catch(error) {
 			return error.message;
 		}

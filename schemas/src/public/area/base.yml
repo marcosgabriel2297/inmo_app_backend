@@ -1,0 +1,43 @@
+components:
+  schemas:
+    Area:
+      description: Un area
+      type: object
+      properties:
+        id:
+          $ref: "#/components/schemas/id"
+        name:
+          description: El nombre del area que se va a utilzar para filtrar
+          type: string
+          example: Salud
+        keywords:
+          description: Esta variable almacena todas las palabras especi
+          type: array
+          example:
+            - 'vacunacion'
+            - 'covid'
+        status:
+          $ref: "#/components/schemas/status"
+
+    CreateArea:
+      description: Creación de un area.
+      type: object
+      properties:
+        name:
+          $ref: "#/components/schemas/Area/properties/name"
+        keywords:
+          $ref: "#/components/schemas/Area/properties/keywords"
+      required:
+        - name
+
+    CreateKeyword:
+      description: Creacion de una palabra clave para un area en especifico.
+      type: object
+      properties:
+        keyword:
+          description: El nombre de la palabra clave que se va a guardar.
+          type: string
+          example: vacunacion
+      required:
+        - keyword
+
