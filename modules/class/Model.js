@@ -31,7 +31,7 @@ module.exports = class Model {
 	}
 
 	static async getOne(params = {}) {
-
+		console.log('this.collection', this.collection);
 		try {
 			const getData = await mongo.collection(this.collection).findOne(params);
 
