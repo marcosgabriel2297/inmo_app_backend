@@ -4,7 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --exit -R nyan --recursive tests/",
+    "demon": "nodemon server.js",
+    "test-watch": "npm test -- -w",
+    "coverage": "nyc npm test",
+    "api-schema-builder": "npx @janiscommerce/api-schema-builder",
+    "test-schema": "npx redoc-cli serve schemas/public.json",
+    "generate-html": "npx redoc-cli bundle schemas/public.json schemas/; mv redoc-static.html src/public/",
+    "lint": "eslint ./src ./tests",
+    "doc": "npm run api-schema-builder; npm run test-schema"
   },
   "repository": {
     "type": "git",

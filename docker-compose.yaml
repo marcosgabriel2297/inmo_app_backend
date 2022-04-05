@@ -1,0 +1,16 @@
+version: "3.7"
+services:
+  digesto_backend:
+
+    container_name: "digesto_back"
+    image: "digesto_backend"
+    restart: always
+    volumes:
+      - './logs:/usr/src/app/logs'
+    ports:
+      - 7020:7020
+
+networks:
+    default:
+        external:
+            name: digesto
