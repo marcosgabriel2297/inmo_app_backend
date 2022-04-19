@@ -1,5 +1,6 @@
 let app = null;
 const user = require('./user');
+const property = require('./property');
 
 const defineRoute = (ruta, requests) => {
 	const baseRequest = '/api/';
@@ -12,4 +13,5 @@ module.exports = aplication => {
 	app = aplication;
 
 	user(defineRoute);
+	property(defineRoute);
 };
