@@ -14,7 +14,8 @@ module.exports = class Model {
 	static get statuses() {
 		return {
 			active: 'active',
-			inactive: 'inactive'
+			inactive: 'inactive',
+			deleted: 'deleted'
 		};
 	}
 
