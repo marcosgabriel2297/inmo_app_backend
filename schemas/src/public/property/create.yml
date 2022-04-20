@@ -1,28 +1,24 @@
 paths:
-  /api/user/login:
+  /api/property/create:
     post:
-      operationId: loginUser
+      operationId: CreateProperty
       tags:
-        - User
-      summary: Login user
+        - Property
+      summary: Create Property
       security:
         - ApiKey: []
           ApiSecret: []
       requestBody:
-        description: login
+        description: create property
         required: true
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/LoginUser"
+              $ref: "#/components/schemas/CreateProperty"
       responses:
         "200":
-          $ref: "#/components/responses/SuccessLoginResponse"
+          $ref: "#/components/responses/SuccessCreatePropertyResponse"
         "400":
           $ref: "#/components/responses/BadRequest"
-        "401":
-          $ref: "#/components/responses/Unauthorized"
-        "403":
-          $ref: "#/components/responses/Forbidden"
         "500":
           $ref: "#/components/responses/InternalError"

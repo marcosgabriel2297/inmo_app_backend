@@ -1,0 +1,70 @@
+{
+	"public": {
+		"errors": [
+			{
+				"keyword": "uniqueItems",
+				"dataPath": ".components.schemas['CreateProperty'].required",
+				"schemaPath": "http://json-schema.org/draft-04/schema#/properties/required/uniqueItems",
+				"params": {
+					"i": 0,
+					"j": 2
+				},
+				"message": "should NOT have duplicate items (items ## 2 and 0 are identical)"
+			},
+			{
+				"keyword": "additionalProperties",
+				"dataPath": ".components.schemas['CreateProperty']",
+				"schemaPath": "#/additionalProperties",
+				"params": {
+					"additionalProperty": "description"
+				},
+				"message": "should NOT have additional properties"
+			},
+			{
+				"keyword": "additionalProperties",
+				"dataPath": ".components.schemas['CreateProperty']",
+				"schemaPath": "#/additionalProperties",
+				"params": {
+					"additionalProperty": "type"
+				},
+				"message": "should NOT have additional properties"
+			},
+			{
+				"keyword": "additionalProperties",
+				"dataPath": ".components.schemas['CreateProperty']",
+				"schemaPath": "#/additionalProperties",
+				"params": {
+					"additionalProperty": "properties"
+				},
+				"message": "should NOT have additional properties"
+			},
+			{
+				"keyword": "additionalProperties",
+				"dataPath": ".components.schemas['CreateProperty']",
+				"schemaPath": "#/additionalProperties",
+				"params": {
+					"additionalProperty": "required"
+				},
+				"message": "should NOT have additional properties"
+			},
+			{
+				"keyword": "required",
+				"dataPath": ".components.schemas['CreateProperty']",
+				"schemaPath": "#/required",
+				"params": {
+					"missingProperty": "$ref"
+				},
+				"message": "should have required property '$ref'"
+			},
+			{
+				"keyword": "oneOf",
+				"dataPath": ".components.schemas['CreateProperty']",
+				"schemaPath": "#/oneOf",
+				"params": {
+					"passingSchemas": null
+				},
+				"message": "should match exactly one schema in oneOf"
+			}
+		]
+	}
+}

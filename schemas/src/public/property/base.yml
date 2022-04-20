@@ -1,0 +1,142 @@
+components:
+  schemas:
+    Property:
+      description: Una propiedad
+      type: object
+      properties:
+        id:
+          $ref: "#/components/schemas/id"
+        location:
+          description: La ubicacion de una propiedad
+          type: object
+          properties:
+            latitude:
+              description: La latitud de la ubicacion.
+              type: number
+              example: 3.12312312
+            longitude:
+              description: La longitud de la ubicacion.
+              type: number
+              example: 3.12313456
+            address:
+              description: La direcion de la ubicacion.
+              type: string
+              example: haiti 229
+            neighborhood:
+              description: El barrio de la ubicacion.
+              type: string
+              example: arboleada
+            city:
+              description: La ciudad de la ubicacion.
+              type: string
+              example: tortuguitas city
+            province:
+              description: La provincia de una ubicacion.
+              type: string
+              example: Tierra del fuego
+        status:
+          $ref: "#/components/schemas/status"
+        owner:
+          description: El dueño o inmobiliaria que dio de alta la publicacion.
+          type: object
+          properties:
+            _id:
+              $ref: "#/components/schemas/id"
+            name:
+              $ref: "#/components/schemas/User/properties/name"
+            email:
+              $ref: "#/components/schemas/User/properties/email"
+            phone:
+              $ref: "#/components/schemas/User/properties/phone"
+            link_whatsapp:
+              $ref: "#/components/schemas/User/properties/link_whatsapp"
+        operation:
+          description: La operacion que tiene la publicacion.
+          type: string
+          enum: [venta, alquiler]
+        type:
+          description: el tipo de inmueble de la publicacion.
+          type: string
+          enum: ['terreno', 'departamento', 'casa', 'oficina', 'local comercial', 'edificio comercial', 'cochera', 'PH', 'deposito']
+        title:
+          description: Titulo de la publicacion
+          type: string
+          example: Casa en venta en lo de tu vieja
+        description:
+          description: Descripcion de la publicacion
+          type: string
+          example: Una casa re mugrienta con olor a nico espinoza
+        rooms:
+          description: Ambientes de la publicacion
+          type: string
+          example: 5
+        price:
+          description: El valor de la venta o alquiler
+          type: number
+          example: 5
+        images:
+          description: Imagenes de la propiedad.
+          type: array
+          items:
+            type: string
+            example:
+              - https://i.ytimg.com/vi/HN5SvaGIa3E/hqdefault.jpg
+
+
+    CreateProperty:
+      description: Crear una publicacion
+      type: object
+      properties:
+        latitude:
+          $ref: "#/components/schemas/Property/properties/location/properties/latitude"
+        longitude:
+          $ref: "#/components/schemas/Property/properties/location/properties/longitude"
+        address:
+          $ref: "#/components/schemas/Property/properties/location/properties/address"
+        neighborhood:
+          $ref: "#/components/schemas/Property/properties/location/properties/neighborhood"
+        city:
+          $ref: "#/components/schemas/Property/properties/location/properties/city"
+        province:
+          $ref: "#/components/schemas/Property/properties/location/properties/province"
+        owner:
+          description: Datos de un dueño de la publicacion
+          type: object
+          properties:
+            id:
+              description: El id del dueño
+              type: string
+              example: 625f7144d6ebb2df89a324c1
+            type:
+              description: Tipo de dueño
+              type: string
+              enum: [owner, inmobiliaria]
+        operation:
+          $ref: "#/components/schemas/Property/properties/operation"
+        type:
+           $ref: "#/components/schemas/Property/type"
+        title:
+           $ref: "#/components/schemas/Property/properties/title"
+        description:
+           $ref: "#/components/schemas/Property/properties/description"
+        rooms:
+           $ref: "#/components/schemas/Property/properties/rooms"
+        price:
+           $ref: "#/components/schemas/Property/properties/price"
+        images:
+           $ref: "#/components/schemas/Property/properties/images"
+      required:
+        - latitude
+        - longitude
+        - address
+        - neighborhood
+        - city
+        - province
+        - owner
+        - operation
+        - type
+        - title
+        - description
+        - rooms
+        - price
+        - images

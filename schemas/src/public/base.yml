@@ -101,3 +101,13 @@ components:
                 description: codigo de estado
                 type: number
                 example: 2
+
+    SuccessCreatePropertyResponse:
+      description: Creacion de una propiedad
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              propertyInserted:
+                $ref: "#/components/schemas/id"
