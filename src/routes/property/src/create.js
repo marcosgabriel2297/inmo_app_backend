@@ -5,6 +5,7 @@ const OwnerModel = require('../../../models/Owner');
 const InmoModel = require('../../../models/Inmo');
 const PropertyModel = require('../../../models/Property');
 const schemaProperty = require('../../../structures/property/create');
+const authLogin = require('../../../../modules/auth/auth-middleware-login');
 const { messageForUserNotFound } = require('../../../messages/property/create');
 
 const handler = async (req, res) => {
@@ -54,6 +55,6 @@ const handler = async (req, res) => {
 	}
 };
 
-app.post('/', handler);
+app.post('/', authLogin, handler);
 
 module.exports = { app, handler };
