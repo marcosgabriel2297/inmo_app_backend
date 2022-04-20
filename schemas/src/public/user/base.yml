@@ -10,10 +10,6 @@ components:
           description: El nombre del usuario
           type: string
           example: Peter
-        lastname:
-          description: El apellido del usuario
-          type: string
-          example: Parker
         email:
           description: El email del usuario
           type: string
@@ -22,12 +18,28 @@ components:
           description: La contraseña del usuario, que está encriptada con bcrypt.
           type: string
           example: $2b$12$WGI2R5P.MzTDAl6vS3s5JuaX6NgB0cqHGkozfKdkC4FsHoMHvAgQ6
+        phone:
+          description: El telefono del usuario
+          type: string
+          example: 0303456
+        link_whatsapp:
+          description: El enlace a whatsapp
+          type: string
+          example: url
         status:
           $ref: "#/components/schemas/status"
-        isAdmin:
-          description: Esta variable indica si el usuario es admin o no. En caso de false es colaborador
-          type: boolean
-          example: true
+        location:
+          description: La ubicacion de un usuario
+          type: object
+          properties:
+            city:
+              description: La ciudad de la ubicacion.
+              type: string
+              example: La loma
+            province:
+              description: La provincia de una ubicacion.
+              type: string
+              example: Tierra del fuego
 
     LoginUser:
       description: Logueo de user
@@ -36,77 +48,9 @@ components:
         email:
           $ref: "#/components/schemas/User/properties/email"
         password:
-          $ref: "#/components/schemas/User/properties/password"
-
-      required:
-        - email
-        - password
-
-    CollaboratorUser:
-      description: Creacion usuario colaborador
-      type: object
-      properties:
-        name:
-          $ref: "#/components/schemas/User/properties/email"
-        lastname:
-          $ref: "#/components/schemas/User/properties/lastname"
-        email:
-          $ref: "#/components/schemas/User/properties/email"
-        isAdmin:
-          $ref: "#/components/schemas/User/properties/isAdmin"
-      required:
-        - name
-        - lastname
-        - email
-
-    CollaboratorUserEdit:
-      description: Edicion usuario colaborador
-      type: object
-      properties:
-        name:
-          $ref: "#/components/schemas/User/properties/name"
-        lastname:
-          $ref: "#/components/schemas/User/properties/lastname"
-        email:
-          $ref: "#/components/schemas/User/properties/email"
-        isAdmin:
-          $ref: "#/components/schemas/User/properties/isAdmin"
-      required:
-        - name
-        - lastname
-        - email
-
-    ChangeUserPassword:
-      description: Endpoint para cambiar la contraseña de un usuario
-      type: object
-      properties:
-        email:
-          $ref: "#/components/schemas/User/properties/email"
-        password:
-          $ref: "#/components/schemas/User/properties/password"
-        newPassword:
-          description: La nueva contraseña que se va a actualizar
+          description: La contraseña del usuario
           type: string
-          example: thebatman
+          example: holabuendia
       required:
         - email
         - password
-        - newPassword
-
-    ForgotUserPassword:
-      description: Endpoint que se utiliza para enviar un email al usuario para cambiar su password.
-      type: object
-      properties:
-        email:
-          $ref: "#/components/schemas/User/properties/email"
-      required:
-        - email
-
-    ChangeForgotUserPassword:
-      description: Endpoint para cambiar la contraseña de un usuario en caso de que no la recuerde.
-      type: object
-      properties:
-        password:
-          $ref: "#/components/schemas/User/properties/password"
-        token:
-          description: Este token se genera cuando se ejecuta el EP **/api/user/forgot-pass**. Para mas informacion ver el EP nombrado.

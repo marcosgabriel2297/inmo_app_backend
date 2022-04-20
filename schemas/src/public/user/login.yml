@@ -4,7 +4,7 @@ paths:
       operationId: loginUser
       tags:
         - User
-      summary: Login a user
+      summary: Login user
       security:
         - ApiKey: []
           ApiSecret: []
