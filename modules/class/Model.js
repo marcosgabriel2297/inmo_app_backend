@@ -26,7 +26,7 @@ module.exports = class Model {
 
 			return entityInserted;
 		} catch(error) {
-			return error.message;
+			return error;
 		}
 	}
 
@@ -36,7 +36,7 @@ module.exports = class Model {
 
 			return getData;
 		} catch(error) {
-			return error.message;
+			return error;
 		}
 	}
 
@@ -47,7 +47,7 @@ module.exports = class Model {
 
 			return getData;
 		} catch(error) {
-			return error.message;
+			return error;
 		}
 	}
 
@@ -64,7 +64,7 @@ module.exports = class Model {
 
 			return getData;
 		} catch(error) {
-			return error.message;
+			return error;
 		}
 	}
 
@@ -77,7 +77,7 @@ module.exports = class Model {
 
 			return getData;
 		} catch(error) {
-			return error.message;
+			return error;
 		}
 	}
 
@@ -105,7 +105,7 @@ module.exports = class Model {
 			return getData;
 
 		} catch(error) {
-			return error.message;
+			return error;
 		}
 	}
 };
