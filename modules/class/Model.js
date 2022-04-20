@@ -90,7 +90,7 @@ module.exports = class Model {
 			return getData;
 
 		} catch(error) {
-			return error.message;
+			return error;
 		}
 	}
 

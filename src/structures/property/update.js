@@ -14,7 +14,7 @@ module.exports = body => {
 		province: Joi.string().max(100).optional(),
 		owner: Joi.object({
 			id: Joi.objectId().required(),
-			type: Joi.string().valid('inmobiliarias', 'owners').optional()
+			type: Joi.string().valid('inmobiliaria', 'owner').optional()
 		}),
 		operation: Joi.string().valid('venta', 'alquiler').optional(),
 		type: Joi.string().valid(

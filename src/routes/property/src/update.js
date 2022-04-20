@@ -16,7 +16,7 @@ const handler = async (req, res) => {
 		return res.status(400).json(validation);
 
 	try {
-		const userType = req.body.owner.type === 'owners' ?
+		const userType = req.body.owner.type === 'owner' ?
 			await OwnerModel.getById(req.body.owner.id) :
 			await InmoModel.getById(req.body.owner.id);
 
